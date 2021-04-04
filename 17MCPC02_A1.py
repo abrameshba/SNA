@@ -2,17 +2,17 @@
 # coding: utf-8
 
 
-import pdb
+# import pdb
 import networkx as nx
 import matplotlib.pyplot as plt
 import collections
 import time
 from scipy.optimize import curve_fit
 import numpy as np
-from pandas import read_csv
+# from pandas import read_csv
 # fit a line to the economic data
-from numpy import sin
-from numpy import sqrt
+# from numpy import sin
+# from numpy import sqrt
 from numpy import arange
 
 
@@ -24,12 +24,11 @@ def show_head(lst):
 
 
 # define the true objective function
-def objective(x, a, b):
-    return a * (x ** b)
+def objective(alpha, a, b):
+    return a * (alpha ** b)
 
 
 start = time.time()
-graph = nx.Graph()
 
 # graph.name = "fb-pages-media"
 # with open("/home/cilab/Downloads/SNA/fb-pages-media.nodes", "r") as file:
@@ -99,26 +98,26 @@ for _ in range(5):
     dc_dict = nx.degree_centrality(gcc)
     print("Degree centrality : ")
     #    print(time.time()-l_start)
-    dc_list = sorted([(key, dc_dict[key]) for key in dc_dict], key=lambda x: x[1], reverse=True)
+    dc_list = sorted([(key, dc_dict[key]) for key in dc_dict], key=lambda v: v[1], reverse=True)
     show_head(dc_list)
     #    l_start = time.time()
     cc_dict = nx.closeness_centrality(gcc)
     print("Closeness centrality : ")
     #    print(time.time()-l_start)
-    cc_list = sorted([(key, cc_dict[key]) for key in cc_dict], key=lambda x: x[1], reverse=True)
+    cc_list = sorted([(key, cc_dict[key]) for key in cc_dict], key=lambda v: v[1], reverse=True)
     show_head(cc_list)
     #    l_start = time.time()
     c_dict = nx.clustering(gcc)
     print("Clustering : " + str(nx.transitivity(gcc)))
     #    print(time.time()-l_start)
-    c_list = sorted([(key, c_dict[key]) for key in c_dict], key=lambda x: x[1], reverse=True)
+    c_list = sorted([(key, c_dict[key]) for key in c_dict], key=lambda v: v[1], reverse=True)
     # nx.draw(gcc, with_labels=True)
     # plt.show()
     #    l_start = time.time()
     bc_dict = nx.betweenness_centrality(gcc)
     print("Betweenness centrality :")
     #    print(time.time()-l_start)
-    bc_list = sorted([(key, bc_dict[key]) for key in bc_dict], key=lambda x: x[1], reverse=True)
+    bc_list = sorted([(key, bc_dict[key]) for key in bc_dict], key=lambda v: v[1], reverse=True)
     show_head(bc_list)
     gcc.remove_node(bc_list[0][0])
     print("Removing :")
@@ -133,7 +132,7 @@ print(time.time() - start)
 # curve fit
 popt, _ = curve_fit(objective, np.array(deg), np.array(cnt))
 # summarize the parameter values
-a, b = popt
+x, y = popt
 # print(popt)
 # print(pcov)
 # plot input vs output
@@ -141,7 +140,7 @@ plt.scatter(deg, cnt)
 # define a sequence of inputs between the smallest and largest known inputs
 x_line = arange(min(np.array(deg)), max(np.array(deg)), 1)
 # calculate the output for the range
-y_line = objective(x_line, a, b)
+y_line = objective(x_line, x, y)
 # create a line plot for the mapping function
 plt.xlabel("Degree of scientists")
 plt.ylabel("Number of scientists")
