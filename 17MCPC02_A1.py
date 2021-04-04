@@ -143,6 +143,8 @@ x_line = arange(min(np.array(deg)), max(np.array(deg)), 1)
 # calculate the output for the range
 y_line = objective(x_line, a, b)
 # create a line plot for the mapping function
+plt.xlabel("Degree of scientists")
+plt.ylabel("Number of scientists")
 plt.plot(x_line, y_line, '--', color='red')
 plt.savefig('17MCPC02-02.png')
 plt.show()
