@@ -1,0 +1,100 @@
+\documentclass[10pt,a4paper]{article}
+%\usepackage[utf8]{inputenc}
+%\usepackage{amsmath}
+%\usepackage{amsfonts}
+%\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+}
+\usepackage[outdir=./]{epstopdf}
+\begin{document}
+\begin{center}
+	Social Network Analysis - Assignment-1
+\end{center}
+A coauthorship network of scientists working on network theory and experiment, as compiled by M. Newman in May 2006. A link of \url{snap.stanford.edu} redirected to 
+\url{http://www-personal.umich.edu/~mejn/netdata/netscience.zip} 
+\vskip 2mm
+\noindent 
+Name: Collaboration network
+\\
+Number of nodes: 7343
+\\
+Number of edges: 11898
+\\
+Average degree:   3.2406
+\\
+Directed : No
+\\
+Weighted : No
+\\
+Loops : No
+\\
+Number of Components :  2060
+\\
+Clustering coefficient : 0.240 \\
+\begin{table}[h]
+	\centering
+	\begin{tabular}{|l|l|}
+	\hline 
+	\textbf{Parameter}& \textbf{Value} \\ 
+	\hline
+	Number of nodes $|V|$ & 3621 \\
+	\hline
+	Number of edges $|E|$ & 9461 \\
+	\hline
+	Average degree $d_{avg}$ &    5.2256 \\
+	\hline 
+	Radius & 7 \\ 
+	\hline
+	Diameter & 14 \\ 
+	\hline 
+	Density &  0.001435 \\ 
+	\hline 
+	Degree Centrality & 0.02817 \\ 
+	\hline 
+	Closeness Centrality & 0.30845 \\ 
+	\hline 
+	Betweenness centrality & 0.06895 \\ 
+	\hline 
+	Clustering coefficient & 0.22 \\ 
+	\hline 
+\end{tabular} 
+	\caption{Brief statistics of Greatest Connected Component of collaboration network before removing first node having highest betweenness centrality}
+\end{table}
+
+%Plot: \\
+
+\begin{figure}[h]
+	\centering
+	\includegraphics{17MCPC02-1.eps}
+	\caption{Degree distribution of collaboration network}
+\end{figure}	
+
+\noindent Power law : 
+
+\noindent $ y = ax^{b} $ \\
+\noindent a = 2480.4587 \\
+b = -1.8219 \\
+Best fit is observed at a = 947.5 and b = -0.95
+
+
+\begin{figure}[h]
+	\centering
+	\includegraphics{17MCPC02-2.eps}
+	\caption{Power law and best fit curve matching}
+\end{figure}	
+
+\begin{flushleft}
+	Experiment observation:
+\end{flushleft}
+
+Upon removing a node with highest betweenness centrality, there isn't any change in either radius or diameter of GCC for first 10 operations. Where as average degree, density, closeness centrality, clustering coefficient, betweenness centrality measurements decreased very slowly. 
+ 
+
+	                	
+\end{document}
