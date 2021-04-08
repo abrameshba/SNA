@@ -1,2 +1,2 @@
 # SNA
-SNA class assignments and practice
+Social Network Analysis class assignments and practice
